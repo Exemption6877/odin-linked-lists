@@ -36,11 +36,19 @@ class LinkedList {
       this.head = newNode;
     }
   }
+
+  size(node = this.head) {
+    if (node === null) {
+      return 0;
+    }
+    return 1 + this.size(node.nextNode);
+  }
 }
 
-// const list = new LinkedList();
-// list.append("Cat");
-// list.append("Dog");
-// list.prepend("Elephant");
+const list = new LinkedList();
+list.append("Cat");
+list.append("Dog");
+list.prepend("Elephant");
 
-// console.log(list);
+console.log(list.size());
+console.log(list);
