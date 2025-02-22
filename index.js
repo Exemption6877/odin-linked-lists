@@ -41,7 +41,8 @@ class LinkedList {
     return this.head;
   }
 
-  getTail(node = this.head, cb) {
+  // I need to hide defaults to prevent passing anything inside getTail()
+  getTail(node = this.head) {
     if (node === null) {
       return null;
     }
@@ -63,6 +64,24 @@ class LinkedList {
     }
     return null;
   }
+
+  // make a link to this child become null
+  // i need to find a parent of this node
+  pop() {
+    let node = this.head;
+    let prev = null;
+
+    if (node.nextNode === null) {
+      this.head = null;
+      return;
+    }
+
+    while (node.nextNode !== null) {
+      prev = node;
+      node = node.nextNode;
+    }
+    prev.nextNode = null;
+  }
 }
 
 const list = new LinkedList();
@@ -70,5 +89,9 @@ list.append("Cat");
 list.append("Dog");
 list.prepend("Elephant");
 
-console.log(list.at(2));
+// list.pop();
+// list.pop();
+// list.pop();
+console.log(list);
+// console.log(list.at(2));
 // console.log(list);
