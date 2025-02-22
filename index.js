@@ -96,6 +96,19 @@ class LinkedList {
     }
     return findNodeValue(node);
   }
+
+  find(value) {
+    let node = this.head;
+    let index = 0;
+    while (node !== null) {
+      if (node.value === value) {
+        return index;
+      }
+      index++;
+      node = node.nextNode;
+    }
+    return null;
+  }
 }
 
 const list = new LinkedList();
@@ -106,7 +119,9 @@ list.prepend("Elephant");
 // list.pop();
 // list.pop();
 // list.pop();
-console.log(list.contains("lephant"));
+
+console.log(list.find("Dog"));
+// console.log(list.contains("Elephant"));
 console.log(list);
 // console.log(list.at(2));
 // console.log(list);
