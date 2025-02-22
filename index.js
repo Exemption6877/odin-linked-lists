@@ -41,7 +41,7 @@ class LinkedList {
     return this.head;
   }
 
-  getTail(node = this.head) {
+  getTail(node = this.head, cb) {
     if (node === null) {
       return null;
     }
@@ -50,6 +50,19 @@ class LinkedList {
     }
     return this.getTail(node.nextNode);
   }
+
+  at(index) {
+    let node = this.head;
+    let counter = 0;
+    while (node !== null) {
+      if (counter === index) {
+        return node;
+      }
+      counter++;
+      node = node.nextNode;
+    }
+    return null;
+  }
 }
 
 const list = new LinkedList();
@@ -57,5 +70,5 @@ list.append("Cat");
 list.append("Dog");
 list.prepend("Elephant");
 
-console.log(list.getTail());
+console.log(list.at(2));
 // console.log(list);
