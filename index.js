@@ -10,19 +10,12 @@ class LinkedList {
     this.head = head;
   }
 
-  findLast(item) {
-    if (item.nextNode === null) {
-      return item;
-    }
-    return this.findLast(item.nextNode);
-  }
-
   append(value) {
     const newNode = new Node(value);
     if (this.head === null) {
       this.head = newNode;
     } else {
-      const lastItem = this.findLast(this.head);
+      const lastItem = this.getTail(this.head);
       lastItem.nextNode = newNode;
     }
   }
@@ -43,6 +36,20 @@ class LinkedList {
     }
     return 1 + this.size(node.nextNode);
   }
+
+  getHead() {
+    return this.head;
+  }
+
+  getTail(node = this.head) {
+    if (node === null) {
+      return null;
+    }
+    if (node.nextNode === null) {
+      return node;
+    }
+    return this.getTail(node.nextNode);
+  }
 }
 
 const list = new LinkedList();
@@ -50,5 +57,5 @@ list.append("Cat");
 list.append("Dog");
 list.prepend("Elephant");
 
-console.log(list.size());
-console.log(list);
+console.log(list.getTail());
+// console.log(list);
