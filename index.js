@@ -71,6 +71,8 @@ class LinkedList {
     let node = this.head;
     let prev = null;
 
+    if (node === null) return;
+
     if (node.nextNode === null) {
       this.head = null;
       return;
@@ -84,7 +86,6 @@ class LinkedList {
   }
 
   contains(value) {
-    let node = this.head;
     function findNodeValue(node) {
       if (node.value === value) {
         return true;
@@ -94,7 +95,7 @@ class LinkedList {
         return findNodeValue(node.nextNode);
       }
     }
-    return findNodeValue(node);
+    return findNodeValue(this.head);
   }
 
   find(value) {
@@ -109,19 +110,32 @@ class LinkedList {
     }
     return null;
   }
+
+  toString() {
+    let node = this.head;
+    let output = "";
+    while (node !== null) {
+      output = output.concat(`( ${node.value} )`);
+      if (node.nextNode !== null) {
+        output = output.concat(" -> ");
+      }
+
+      node = node.nextNode;
+    }
+    return output.concat(` -> ${null}`);
+  }
 }
 
 const list = new LinkedList();
 list.append("Cat");
-list.append("Dog");
-list.prepend("Elephant");
 
 // list.pop();
 // list.pop();
-// list.pop();
+list.pop();
 
-console.log(list.find("Dog"));
+console.log(list.toString());
+// console.log(list.find("Dog"));
 // console.log(list.contains("Elephant"));
-console.log(list);
+// console.log(list);
 // console.log(list.at(2));
 // console.log(list);
