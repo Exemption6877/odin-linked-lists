@@ -119,23 +119,10 @@ class LinkedList {
       if (node.nextNode !== null) {
         output = output.concat(" -> ");
       }
-
       node = node.nextNode;
     }
-    return output.concat(` -> ${null}`);
+    return output.concat(` -> null`);
   }
 }
 
-const list = new LinkedList();
-list.append("Cat");
-
-// list.pop();
-// list.pop();
-list.pop();
-
-console.log(list.toString());
-// console.log(list.find("Dog"));
-// console.log(list.contains("Elephant"));
-// console.log(list);
-// console.log(list.at(2));
-// console.log(list);
+export default LinkedList;
